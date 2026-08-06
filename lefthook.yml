@@ -1,0 +1,19 @@
+# lefthook.yml
+
+colors: false
+
+pre-commit:
+  parallel: true
+  commands:
+    biome-check:
+      glob: "*.{js,ts,cjs,mjs,json,jsx,tsx,astro,css}"
+      run: pnpm biome check --write --no-errors-on-unmatched {staged_files}
+      stage_fixed: true
+
+    astro-check:
+      run: pnpm astro check
+
+pre-push:
+  commands:
+    build-check:
+      run: pnpm build
