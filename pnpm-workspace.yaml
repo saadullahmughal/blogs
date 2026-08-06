@@ -2,5 +2,4 @@ allowBuilds:
   esbuild: true
   lefthook: true
   sharp: true
-minimumReleaseAgeExclude:
-  - astro@7.2.0
+  workerd: true
