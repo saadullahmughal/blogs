@@ -1,9 +1,9 @@
+import { experimental_getFontFileURL, fontData } from "astro:assets";
 import type { APIRoute } from "astro";
 import satori from "satori";
 import sharp from "sharp";
-import { fontData, experimental_getFontFileURL } from "astro:assets";
-import { getFontPathByWeight } from "@/utils/getFontPathByWeight";
 import config from "@/config";
+import { getFontPathByWeight } from "@/utils/getFontPathByWeight";
 
 export const GET: APIRoute = async context => {
   const fonts = fontData["--font-google-sans-code"];

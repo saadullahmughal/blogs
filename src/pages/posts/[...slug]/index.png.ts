@@ -1,11 +1,11 @@
-import type { APIRoute } from "astro";
+import { experimental_getFontFileURL, fontData } from "astro:assets";
 import { getCollection } from "astro:content";
-import { fontData, experimental_getFontFileURL } from "astro:assets";
+import type { APIRoute } from "astro";
 import satori from "satori";
 import sharp from "sharp";
+import config from "@/config";
 import { getFontPathByWeight } from "@/utils/getFontPathByWeight";
 import { getPostSlug } from "@/utils/getPostPaths";
-import config from "@/config";
 
 export async function getStaticPaths() {
   if (!config.features.dynamicOgImage) {

@@ -12,7 +12,7 @@ export const toTransitionName = (str: string): string => {
     // encode non-ASCII chars (Chinese, Japanese, etc.)
     .replace(
       /[^\x00-\x7F]/gu,
-      c => "u" + c.codePointAt(0)!.toString(16).padStart(6, "0")
+      c => `u${c.codePointAt(0)?.toString(16).padStart(6, "0")}`
     )
     // replace any remaining invalid chars (colons, slashes, etc.)
     .replace(/[^a-zA-Z0-9_-]/g, "-")
@@ -20,7 +20,7 @@ export const toTransitionName = (str: string): string => {
     .replace(/-+/g, "-")
     .replace(/^-+|-+$/g, "");
   // CSS ident must not start with a digit
-  if (/^\d/.test(result)) result = "p-" + result;
+  if (/^\d/.test(result)) result = `p-${result}`;
   if (!result) result = "post";
   return result;
 };

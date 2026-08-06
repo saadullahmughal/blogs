@@ -1,17 +1,17 @@
 ---
 import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import IconRss from "@/assets/icons/IconRss.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
-import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
-import Socials from "@/components/Socials.astro";
+import IconRss from "@/assets/icons/IconRss.svg";
 import Card from "@/components/Card.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
 import LinkButton from "@/components/LinkButton.astro";
-import { getSortedPosts } from "@/utils/getSortedPosts";
-import { useTranslations } from "@/i18n";
+import Socials from "@/components/Socials.astro";
 import config from "@/config";
+import { useTranslations } from "@/i18n";
+import Layout from "@/layouts/Layout.astro";
+import { getSortedPosts } from "@/utils/getSortedPosts";
 
 const { socials, posts: postsConfig } = config;
 
