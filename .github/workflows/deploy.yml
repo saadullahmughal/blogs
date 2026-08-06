@@ -14,6 +14,9 @@ jobs:
       contents: read
       deployments: write
 
+    env:
+      PNPM_ONLY_BUILT_DEPENDENCIES: "*"
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
