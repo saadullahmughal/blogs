@@ -14,9 +14,6 @@ jobs:
       contents: read
       deployments: write
 
-    env:
-      PNPM_ONLY_BUILT_DEPENDENCIES: "*"
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -43,4 +40,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }}
+          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }} --branch=${{ vars.CLOUDFLARE_PROJECT_BRANCH }}
