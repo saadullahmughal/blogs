@@ -2,14 +2,15 @@ import { defineAstroPaperConfig } from "./src/types/config";
 
 export default defineAstroPaperConfig({
   site: {
-    url: "https://astro-paper.pages.dev/",
-    title: "AstroPaper",
-    description: "A minimal, responsive and SEO-friendly Astro blog theme.",
-    author: "Sat Naing",
-    profile: "https://satna.ing",
+    url: "https://saadullahmughal.github.io/",
+    title: "M. Saadullah Zafar",
+    description:
+      "Personal website & blog of M. Saadullah Zafar — Software Engineer & MSCS candidate at UET Lahore.",
+    author: "M. Saadullah Zafar",
+    profile: "https://github.com/saadullahmughal",
     ogImage: "default-og.jpg",
     lang: "en",
-    timezone: "Asia/Bangkok",
+    timezone: "Asia/Karachi",
     dir: "ltr",
   },
   posts: {
@@ -20,19 +21,17 @@ export default defineAstroPaperConfig({
   features: {
     lightAndDarkMode: true,
     dynamicOgImage: true,
-    showArchives: true,
+    showArchives: false,
     showBackButton: true,
     editPost: {
-      enabled: true,
-      url: "https://github.com/satnaing/astro-paper/edit/main/",
+      enabled: false,
     },
-    search: "pagefind",
+    search: false,
   },
   socials: [
-    { name: "github", url: "https://github.com/satnaing/astro-paper" },
-    { name: "x", url: "https://x.com/username" },
-    { name: "linkedin", url: "https://www.linkedin.com/in/username/" },
-    { name: "mail", url: "mailto:yourmail@gmail.com" },
+    { name: "github", url: "https://github.com/saadullahmughal" },
+    { name: "linkedin", url: "https://www.linkedin.com/in/saadullah-mughal/" },
+    { name: "mail", url: "mailto:saadullah.swe@gmail.com" },
   ],
   shareLinks: [
     { name: "whatsapp", url: "https://wa.me/?text=" },

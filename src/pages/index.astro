@@ -1,28 +1,24 @@
 ---
-import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
-import IconRss from "@/assets/icons/IconRss.svg";
-import Card from "@/components/Card.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
-import LinkButton from "@/components/LinkButton.astro";
 import Socials from "@/components/Socials.astro";
 import config from "@/config";
 import { useTranslations } from "@/i18n";
 import Layout from "@/layouts/Layout.astro";
-import { getSortedPosts } from "@/utils/getSortedPosts";
 
-const { socials, posts: postsConfig } = config;
+const { socials } = config;
 
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
-
-const posts = await getCollection("posts");
-const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const homePath = getRelativeLocaleUrl(locale, "");
+
+const skills = {
+  backend: ["NestJS", "FastAPI", "Express.js"],
+  frontend: ["React", "Next.js"],
+  cloud: ["Azure", "AWS", "GCP"],
+  tools: ["Git & GitHub", "VS Code", "Zed Editor"],
+};
 ---
 
 <Layout>
@@ -33,45 +29,76 @@ const homePath = getRelativeLocaleUrl(locale, "");
     data-home-path={homePath}
     class="app-layout my-1"
   >
-    <section id="hero" class="border-border border-b pt-8 pb-6">
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Mingalaba
-      </h1>
-      <a
-        target="_blank"
-        href={`${import.meta.env.BASE_URL.replace(/\/?$/, "/")}rss.xml`}
-        class="inline-block"
-        aria-label="RSS Feed"
-        title="RSS Feed"
-      >
-        <IconRss
-          width={20}
-          height={20}
-          class="stroke-accent scale-125 stroke-3 rtl:-rotate-90"
-        />
-        <span class="sr-only">RSS Feed</span>
-      </a>
+    <section id="hero" class="pt-6 pb-6">
+      <div>
+        <h1 class="my-2 text-3xl font-bold sm:my-4 sm:text-4xl">
+          M. Saadullah Zafar 👋
+        </h1>
+        <p class="text-lg font-medium text-accent">
+          Software Engineer with an urge to improve the digital world
+        </p>
+      </div>
 
-      <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
-      </p>
-      <p class="mt-2">
-        Read the blog posts or check{" "}
-        <LinkButton
-          class="hover:text-accent underline decoration-dashed underline-offset-4"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton>{" "}
-        for more info.
-      </p>
+      <div class="mt-6 space-y-4 text-base leading-relaxed opacity-90">
+        <p>
+          Welcome! I am a Software Engineer with ~2 years of industry experience, specializing in backend development and full-stack web solutions. I graduated in Computer Science from <strong>UET Lahore</strong> and am currently pursuing my <strong>MSCS</strong> there.
+        </p>
+        <p>
+          I have a deep interest in <strong>cybersecurity</strong> and a strong vision for positive digital transformation—especially spread awareness about technology, digital safety, and tech empowerment across the Islamic world and beyond.
+        </p>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="mt-8 border-t border-border pt-6">
+        <h2 class="text-xl font-semibold mb-3">Tech & Skills Overview</h2>
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 text-sm">
+          <div class="rounded-md border border-border p-3">
+            <span class="font-semibold block mb-1">Backend Core:</span>
+            <div class="flex flex-wrap gap-1.5">
+              {skills.backend.map(item => (
+                <span class="rounded bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">{item}</span>
+              ))}
+            </div>
+          </div>
+          <div class="rounded-md border border-border p-3">
+            <span class="font-semibold block mb-1">Frontend:</span>
+            <div class="flex flex-wrap gap-1.5">
+              {skills.frontend.map(item => (
+                <span class="rounded bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">{item}</span>
+              ))}
+            </div>
+          </div>
+          <div class="rounded-md border border-border p-3">
+            <span class="font-semibold block mb-1">Cloud Platforms:</span>
+            <div class="flex flex-wrap gap-1.5">
+              {skills.cloud.map(item => (
+                <span class="rounded bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">{item}</span>
+              ))}
+            </div>
+          </div>
+          <div class="rounded-md border border-border p-3">
+            <span class="font-semibold block mb-1">Tools & Editors:</span>
+            <div class="flex flex-wrap gap-1.5">
+              {skills.tools.map(item => (
+                <span class="rounded bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">{item}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stay Tuned Notice -->
+      <div class="mt-8 rounded-lg border border-accent/30 bg-accent/5 p-4 text-center">
+        <h3 class="font-semibold text-lg text-accent">🚀 Content Coming Soon</h3>
+        <p class="mt-1 text-sm opacity-90">
+          I will be sharing technical articles, insights on software development, cybersecurity tips, and awareness guides here. <strong>Stay tuned!</strong>
+        </p>
+      </div>
+
       {
         socials.length > 0 && (
-          <div class="mt-4 flex max-sm:flex-col sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">
+          <div class="mt-6 flex max-sm:flex-col sm:items-center">
+            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0 font-medium">
               {t.home.socialLinks}:
             </div>
             <Socials />
@@ -79,49 +106,6 @@ const homePath = getRelativeLocaleUrl(locale, "");
         )
       }
     </section>
-
-    {
-      featuredPosts.length > 0 && (
-        <section
-          id="featured"
-          class:list={[
-            "pt-12 pb-6",
-            { "border-border border-b": recentPosts.length > 0 },
-          ]}
-        >
-          <h2 class="text-2xl font-semibold tracking-wide">
-            {t.home.featured}
-          </h2>
-          <ul>
-            {featuredPosts.map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
-
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">
-            {t.home.recentPosts}
-          </h2>
-          <ul>
-            {recentPosts.slice(0, postsConfig.perIndex).map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
-
-    <div class="my-8 text-center">
-      <LinkButton href={getRelativeLocaleUrl(locale, "posts")}>
-        {t.home.allPosts}
-        <IconArrowRight class="inline-block rtl:-rotate-180" />
-      </LinkButton>
-    </div>
   </main>
   <Footer />
 </Layout>
@@ -136,3 +120,4 @@ const homePath = getRelativeLocaleUrl(locale, "");
     }
   });
 </script>
+
